@@ -32,6 +32,16 @@ void Room::removeItem(const std::string& itemName) {
     }
 }
 
+bool Room::hasItems() const {
+    return !items.empty();
+}
+
+void Room::listItems() const {
+    for (const auto& item : items) {
+        std::cout << "- " << item.getName() << std::endl;
+    }
+}
+
 bool Room::hasItem(const std::string& itemName) const {
     return std::any_of(items.begin(), items.end(), [&](const Item& item) {
         return item.getName() == itemName;

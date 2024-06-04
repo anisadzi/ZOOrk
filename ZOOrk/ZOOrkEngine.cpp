@@ -36,6 +36,8 @@ void ZOOrkEngine::run() {
             handleDropCommand(arguments);
         } else if (command == "quit") {
             handleQuitCommand(arguments);
+        } else if (command == "inventory") {
+            handleInventoryCommand(arguments);
         } else {
             std::cout << "I don't understand that command.\n";
         }
@@ -72,14 +74,34 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
     if (arguments.empty()) {
         // If no arguments provided, print the description of the current room
         std::cout << currentRoom->getDescription() << std::endl;
-    } else {
-        if (currentRoom->hasItem(arguments[0])) {
-            // If the item exists, print its description
-            Item item = currentRoom->takeItem(arguments[0]);
-            std::cout << item.getDescription() << std::endl;
+
+        // Check if the room has any items and list them
+        if (currentRoom->hasItems()) {
+            
         } else {
-            // If the item doesn't exist, print a message
-            std::cout << "There is no " << arguments[0] << " here." << std::endl;
+            std::cout << "The room is empty." << std::endl;
+        }
+
+    } else {
+        bool itemFound = false;
+        for (const auto& itemName : arguments) {
+            if (currentRoom->hasItem(itemName)) {
+            // If the item exists, print its description
+            Item item = currentRoom->takeItem(itemName);
+            std::cout << item.getDescription() << std::endl;
+            itemFound = true;
+            } 
+        }
+        if (!itemFound) {
+            // If no matching item found, print a message
+            std::cout << "There is no ";
+            for (size_t i = 0; i < arguments.size(); ++i) {
+                std::cout << arguments[i];
+                if (i < arguments.size() - 1) {
+                    std::cout << " ";
+                }
+            }
+            std::cout << " here." << std::endl;
         }
     }
 }
@@ -136,6 +158,10 @@ void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {
     if (quitStr == "y" || quitStr == "yes") {
         gameOver = true;
     }
+}
+
+void ZOOrkEngine::handleInventoryCommand(std::vector<std::string> arguments) {
+    player->showInventory();
 }
 
 std::vector<std::string> ZOOrkEngine::tokenizeString(const std::string &input) {

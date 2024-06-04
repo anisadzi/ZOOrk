@@ -48,10 +48,14 @@ bool Player::hasItem(const std::string& itemName) const {
 }
 
 void Player::showInventory() const {
+    printInventory();
+}
+
+void Player::printInventory() const {
     if (inventory.empty()) {
         std::cout << "Your inventory is empty" << std::endl;
     } else {
-        std::cout << "You are carryinng: " << std::endl;
+        std::cout << "You are carrying: " << std::endl;
         for (const auto& item : inventory) {
             std::cout << "- " << item.getName() << ": " << item.getDescription() << std::endl;
         }

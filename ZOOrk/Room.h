@@ -22,7 +22,10 @@ public:
     void addItem(const Item& item);
     void removeItem(const std::string& itemName);
     bool hasItem(const std::string& itemName) const;
+    bool hasItems() const;
     Item takeItem(const std::string& itemName);
+    void listItems() const;
+    void printInventory() const;
 
 
 //    void addCharacter(Character*);
@@ -44,6 +47,7 @@ private:
     std::string name;
     std::string description;
     std::vector<Item> items;
+    std::vector<std::string> inventory;
 };
 
 

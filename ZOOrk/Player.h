@@ -10,6 +10,7 @@
 #include "Character.h"
 #include "Location.h"
 #include "NullRoom.h"
+#include "Item.h"
 
 #include <vector>
 #include <algorithm>
@@ -31,6 +32,7 @@ public:
     void removeItem(const std::string& itenName);
     bool hasItem(const std::string& itemname) const;
     void showInventory() const;
+    void printInventory() const;
 
     Item takeItem(const std::string& itemName); // Add this line
 
