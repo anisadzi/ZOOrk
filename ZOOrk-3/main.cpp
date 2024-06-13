@@ -19,7 +19,7 @@ int main() {
     std::shared_ptr<Room> behind_house = std::make_shared<Room>("behind-house",
                             "You are behind the white house. A path leads into the forest to the east. A small window on the house's corner is slightly ajar.\n");
 	
-	std::shared_ptr<Room> white_house = std::make_shared<Room>("white-house",
+    std::shared_ptr<Room> white_house = std::make_shared<Room>("white-house",
                            "You are inside the white house. Look around and explore!\n");
 
     std::shared_ptr<Room> south_of_white_house = std::make_shared<Room>("south-of-white-house",
