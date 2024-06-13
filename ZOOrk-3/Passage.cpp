@@ -23,6 +23,7 @@ std::string Passage::oppositeDirection(const std::string &s) {
     else return "unknown_direction";
 }
 
+// Static method to create a basic passage between two rooms
 void Passage::createBasicPassage(Room* from, Room* to,
                                  const std::string &direction, bool bidirectional = true) {
     std::string passageName = from->getName() + "_to_" + to->getName();
@@ -35,6 +36,7 @@ void Passage::createBasicPassage(Room* from, Room* to,
     }
 }
 
+// Static method to create a door passage between two rooms
 void Passage::createDoor(Room* from, Room* to, const std::string &direction, const Item &requiredItem, bool bidirectional) {
     std::string passageName = from->getName() + "_to_" + to->getName();
     auto temp1 = std::make_shared<Door>(passageName, "A locked door.", from, to, requiredItem);
@@ -46,27 +48,29 @@ void Passage::createDoor(Room* from, Room* to, const std::string &direction, con
     }
 }
 
+// Constructor for Passage class, initializing with name, description, and connected rooms
 Passage::Passage(const std::string &n, const std::string &d, Room* from, Room* to)
         : Location(n, d), fromRoom(from), toRoom(to) {
     setEnterCommand(std::make_shared<PassageDefaultEnterCommand>(this));
 }
 
+// Constructor for Passage class, initializing with name, description, command, and connected rooms
 Passage::Passage(const std::string &n, const std::string &d, std::shared_ptr<Command> c, Room* from,
                  Room* to)
         : Location(n, d, std::move(c)), fromRoom(from), toRoom(to) {}
 
+// Setter Getter method for 'from' room
 void Passage::setFrom(Room* r) {
     fromRoom = r;
 }
-
 Room* Passage::getFrom() const {
     return fromRoom;
 }
 
+// Setter Getter method for 'to' room
 void Passage::setTo(Room* r) {
     toRoom = r;
 }
-
 Room* Passage::getTo() const {
     return toRoom;
 }

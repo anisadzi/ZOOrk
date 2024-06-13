@@ -9,6 +9,7 @@
 
 int main() {
 
+    // Create shared pointers for all the rooms in the game
     std::shared_ptr<Room> start = std::make_shared<Room>("start-room",
                            "You find yourself in an open field west of a white house, its front door are open wide.\n");
 
@@ -58,15 +59,13 @@ int main() {
                             "Entering the room you noticed a large chest. Opening it, you realize it is a treasure chest. Congratulations! You have won the game!");
 	
 	 // Create items
-
     Item key("key", "A rusty key that seems to fit into a lock.");
 
     // Add items to the area
-
     trick_tower->addItem(key);
 	
 	
-	
+	// Create passages between different rooms using Passage static functions
     Passage::createBasicPassage(start.get(), white_house.get(), "east", true);
     Passage::createBasicPassage(start.get(), cave_entrance.get(), "west", true);
     Passage::createBasicPassage(white_house.get(), south_of_white_house.get(), "south", true);
@@ -92,9 +91,10 @@ int main() {
     Passage::createBasicPassage(waterfall.get(),  cave_entrance.get(), "north", true);
     Passage::createBasicPassage(cave_entrance.get(), start.get(), "east", true);
 	
-	
+	// Initialize the game engine with the starting room
     ZOOrkEngine zoork(start);
 
+    // Run the game engine
     zoork.run();
 
     return 0;

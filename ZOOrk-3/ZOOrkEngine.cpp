@@ -25,7 +25,9 @@ void ZOOrkEngine::run() {
         std::vector<std::string> words = tokenizeString(input);
         std::string command = words[0];
         std::vector<std::string> arguments(words.begin() + 1, words.end());
-
+        
+        
+        // Determine which command to execute based on the first word
         if (command == "go") {
             handleGoCommand(arguments);
         } else if ((command == "look") || (command == "inspect")) {
@@ -44,6 +46,8 @@ void ZOOrkEngine::run() {
     }
 }
 
+
+// Handler for the 'go' command
 void ZOOrkEngine::handleGoCommand(std::vector<std::string> arguments) {
     if (arguments.empty()) {
         std::cout << "Go where?" << std::endl;
@@ -78,6 +82,7 @@ void ZOOrkEngine::handleGoCommand(std::vector<std::string> arguments) {
 }
 
 
+// Handler for the 'look' command
 void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
     Room* currentRoom = player->getCurrentRoom();
 
@@ -117,7 +122,7 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
 }
 
 
-
+// Handler for the 'take' command
 void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
     // To be implemented
     if (arguments.empty()) {
@@ -139,6 +144,8 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
     // std::cout << "This functionality is not yet enabled.\n";
 }
 
+
+// Handler for the 'drop' command
 void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments) {
     if (arguments.empty()) {
         std::cout << "Drop what?" << std::endl;
@@ -159,6 +166,7 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments) {
 }
 
 
+// Handler for the 'quit' command
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {
     std::string input;
     std::cout << "Are you sure you want to QUIT?\n> ";
@@ -175,10 +183,13 @@ void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {
 }
 
 
+// Handler for the 'inventory' command
 void ZOOrkEngine::handleInventoryCommand(std::vector<std::string> arguments) {
     player->showInventory();
 }
 
+
+// Utility method to tokenize a string into words
 std::vector<std::string> ZOOrkEngine::tokenizeString(const std::string &input) {
     std::vector<std::string> tokens;
     std::stringstream ss(input);
@@ -191,6 +202,8 @@ std::vector<std::string> ZOOrkEngine::tokenizeString(const std::string &input) {
     return tokens;
 }
 
+
+// Utility method to convert a string to lowercase
 std::string ZOOrkEngine::makeLowercase(std::string input) {
     std::string output = std::move(input);
     std::transform(output.begin(), output.end(), output.begin(), ::tolower);

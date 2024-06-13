@@ -25,16 +25,16 @@ public:
         return Player::playerInstance;
     }
 
-    void setCurrentRoom(Room*);
-    Room* getCurrentRoom() const;
+    void setCurrentRoom(Room*);                   // Set the current room for the player
+    Room* getCurrentRoom() const;                 // Get the current room where the player is located
 
-    void addItem(const Item& item);
-    void removeItem(const std::string& itenName);
-    bool hasItem(const std::string& itemname) const;
-    void showInventory() const;
-    void printInventory() const;
+    void addItem(const Item& item);               // Add an item to the player's inventory
+    void removeItem(const std::string& itemName); // Remove an item from the player's inventory by name
+    bool hasItem(const std::string& itemName) const; // Check if the player has a specific item by name
+    void showInventory() const;                   // Public method to show the player's inventory
+    void printInventory() const;                  // Print the player's inventory
 
-    Item takeItem(const std::string& itemName); // Add this line
+    Item takeItem(const std::string& itemName);   // Take (remove) an item from the player's inventory
 
     Player(const Player &) = delete;
     Player &operator=(const Player &) = delete;

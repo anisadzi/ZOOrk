@@ -20,25 +20,20 @@ public:
     void run();
 
 private:
-    bool gameOver = false;
-    Player *player;
+     bool gameOver = false;               // Flag indicating if the game is over
+    Player *player;                      // Pointer to the player object
 
-    void handleGoCommand(std::vector<std::string>);
+    // Private methods to handle different commands
+    void handleGoCommand(std::vector<std::string>);         // Handle 'go' command
+    void handleLookCommand(std::vector<std::string>);       // Handle 'look' command
+    void handleTakeCommand(std::vector<std::string>);       // Handle 'take' command
+    void handleDropCommand(std::vector<std::string>);       // Handle 'drop' command
+    void handleQuitCommand(std::vector<std::string>);       // Handle 'quit' command
+    void handleInventoryCommand(std::vector<std::string>);  // Handle 'inventory' command
 
-    void handleLookCommand(std::vector<std::string>);
-
-    void handleTakeCommand(std::vector<std::string>);
-
-    void handleDropCommand(std::vector<std::string>);
-
-    void handleQuitCommand(std::vector<std::string>);
-
-    void handleInventoryCommand(std::vector<std::string> arguments);
-
-    static std::vector<std::string> tokenizeString(const std::string&);
-
-    static std::string makeLowercase(std::string);
+    // Utility methods
+    static std::vector<std::string> tokenizeString(const std::string&);  // Tokenize a string into a vector of strings
+    static std::string makeLowercase(std::string);          // Convert a string to lowercase
 };
-
 
 #endif //ZOORK_ZOORKENGINE_H
