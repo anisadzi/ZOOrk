@@ -12,5 +12,5 @@ The project is organized into several branches and folders:
   - **ZOOrk-3**: Final implementation using a `Door` class and considered as final folder submission for the assignment. It is Part 2 of the assignment.
 
 - **test**
-  - A branch where the inventory function is implemented. It is Part 1 of the assignment.
+  - A branch where the `inventory` function is implemented. It is Part 1 of the assignment.
 
