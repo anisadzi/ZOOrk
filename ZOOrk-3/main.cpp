@@ -10,60 +10,60 @@
 int main() {
 
     std::shared_ptr<Room> start = std::make_shared<Room>("start-room",
-                           "You are standing in an open field west of a white house, with a boarded front door.\n");
+                           "You find yourself in an open field west of a white house, its front door are open wide.\n");
 
     std::shared_ptr<Room> south_of_house = std::make_shared<Room>("south-of-house",
-                            "You are facing the south side of a white house.  There is no door here, and all the windows are barred.\n");
+                            "You stand facing the south side of a white house. There's no door, and all windows are barred.\n");
 
     std::shared_ptr<Room> behind_house = std::make_shared<Room>("behind-house",
-                            "You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.\n");
+                            "You are behind the white house. A path leads into the forest to the east. A small window on the house's corner is slightly ajar.\n");
 	
 	std::shared_ptr<Room> white_house = std::make_shared<Room>("white-house",
-                           "You are in the white house. Look around and explore around you!\n");
+                           "You are inside the white house. Look around and explore!\n");
 
     std::shared_ptr<Room> south_of_white_house = std::make_shared<Room>("south-of-white-house",
-                            "You are facing the south side of a white house.  There is a door here that leads to a swamp.\n");
+                            "You are at the south side of the white house. There's a door here leading to a swamp.\n");
                                     
     std::shared_ptr<Room> swamp = std::make_shared<Room>("swamp",
-                            "You are in a swamp. It's game over, you need to restart.\n");
+                            "You find yourself in a murky swamp. Game over. You need to restart.\n");
 
     std::shared_ptr<Room> east_of_white_house = std::make_shared<Room>("east-of-white-house",
                             "You are east of the white house, near a dense forest.\n");
     
     std::shared_ptr<Room> forest = std::make_shared<Room>("forest",
-                            "You are lost in a dense forest. You need to return to the previous room.\n");
+                            "You are lost in a dense forest. You need to find your way back.\n");
                                 
     std::shared_ptr<Room> north_of_white_house = std::make_shared<Room>("north-of-white-house",
-                            "You are facing the north side of the white house. There's a tall trick tower up here.\n");
+                            "You are at the north side of the white house. There's a tall, tricky tower nearby.\n");
 
     std::shared_ptr<Room> trick_tower= std::make_shared<Room>("trick-tower",
-                            "You are inside the trick tower, look around!.\n");
+                            "You are inside the tricky tower. Look around and beware of tricks!\n");
     
     std::shared_ptr<Room> monster_castle = std::make_shared<Room>("monster-castle",
-                            "You are in the monster trap. It's game over. You need to restart.\n");
+                            "You are trapped in the monster's castle. Game over. You need to restart.\n");
     
     std::shared_ptr<Room> cave_entrance = std::make_shared<Room>("cave-entrance",
-                            "You are at the cave entrance of a dark cave.\n");
+                            "You are at the entrance of a dark cave.\n");
 
     std::shared_ptr<Room> waterfall = std::make_shared<Room>("waterfall",
-                            "You have passed the dark cave. You are in the waterfall now.\n");
+                            "You have passed through the dark cave and reached a beautiful waterfall. You noticed something behind the waterfall.\n");
     
     std::shared_ptr<Room> first_door = std::make_shared<Room>("first-door",
-                            "You are in front of a large door.\n");
+                            "It was a door hidden behind the waterfall. You open the door and found yourself in a large hallway with a massive door at the end.\n");
 
     std::shared_ptr<Room> second_door = std::make_shared<Room>("second-door",
-                            "You are in front of another large door, and you need a key to open the door.\n");
+                            "You stand before a large door. It is locked with a padlock. You may need something to open it.\n");
 
     std::shared_ptr<Room> rainbow_road = std::make_shared<Room>("rainbow-road",
-                            "Congratulations! You've reached the Rainbow Road. You win!.\n");
+                            "Entering the room you noticed a large chest. Opening it, you realize it is a treasure chest. Congratulations! You have won the game!");
 	
 	 // Create items
-    Item torch("torch", "A burning torch to light your way.");
+
     Item key("key", "A rusty key that seems to fit into a lock.");
 
-    // Add items to the white house
-    white_house->addItem(torch);
-    white_house->addItem(key);
+    // Add items to the area
+
+    trick_tower->addItem(key);
 	
 	
 	

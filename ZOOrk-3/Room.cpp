@@ -76,10 +76,10 @@ std::shared_ptr<Passage> Room::getPassage(const std::string &direction) {
     if (it != passageMap.end()) {
         return it->second;
     } else {
-        std::cout << "It is impossible to go " << direction << "!\n";
         return nullptr;
     }
 }
+
 
 std::string Room::getDescription() const {
     std::string roomDescription = description;

@@ -13,10 +13,10 @@ public:
     void enter() override {
         Player* player = Player::instance();
         if (player->hasItem(requiredItem.getName())) {
-            std::cout << "You use the " << requiredItem.getName() << " to unlock the door.\n";
+            std::cout << "You used the " << requiredItem.getName() << " to unlock the door.\n";
             Passage::enter();
         } else {
-            std::cout << "The door is locked. You need a " << requiredItem.getName() << " to open it.\n";
+            std::cout << "The door is locked. You might need a " << requiredItem.getName() << " to open it.\n";
         }
     }
 

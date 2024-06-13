@@ -45,6 +45,11 @@ void ZOOrkEngine::run() {
 }
 
 void ZOOrkEngine::handleGoCommand(std::vector<std::string> arguments) {
+    if (arguments.empty()) {
+        std::cout << "Go where?" << std::endl;
+        return;
+    }
+
     std::string direction;
     if (arguments[0] == "n" || arguments[0] == "north") {
         direction = "north";
@@ -64,9 +69,14 @@ void ZOOrkEngine::handleGoCommand(std::vector<std::string> arguments) {
 
     Room* currentRoom = player->getCurrentRoom();
     auto passage = currentRoom->getPassage(direction);
-    player->setCurrentRoom(passage->getTo());
-    passage->enter();
+    if (passage == nullptr) {
+        std::cout << "It is impossible to go " << direction << "!" << std::endl;
+    } else {
+        player->setCurrentRoom(passage->getTo());
+        passage->enter();
+    }
 }
+
 
 void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
     Room* currentRoom = player->getCurrentRoom();
@@ -152,13 +162,18 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments) {
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {
     std::string input;
     std::cout << "Are you sure you want to QUIT?\n> ";
-    std::cin >> input;
+    std::getline(std::cin, input);
     std::string quitStr = makeLowercase(input);
 
     if (quitStr == "y" || quitStr == "yes") {
         gameOver = true;
+    } else if (quitStr == "n" || quitStr == "no") {
+        std::cout << "Quit aborted.\n";
+    } else {
+        std::cout << "Invalid input. Quit aborted.\n";
     }
 }
+
 
 void ZOOrkEngine::handleInventoryCommand(std::vector<std::string> arguments) {
     player->showInventory();
