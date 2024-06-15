@@ -141,7 +141,6 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
     } else {
         std::cout << "There is no " << itemName << " here." << std::endl;
     }
-    // std::cout << "This functionality is not yet enabled.\n";
 }
 
 
