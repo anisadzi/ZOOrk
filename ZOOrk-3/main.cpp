@@ -56,7 +56,7 @@ int main() {
                             "You stand before a large door. It is locked with a padlock. You may need something to open it.\n");
 
     std::shared_ptr<Room> rainbow_road = std::make_shared<Room>("rainbow-road",
-                            "Entering the room you noticed a large chest. Opening it, you realize it is a treasure chest. Congratulations! You have won the game!");
+                            "Entering the door, you stand in the rainbow road. You noticed a large chest. Opening it, you realize it is a treasure chest. Congratulations! You have won the game!");
 	
 	 // Create items
     Item key("key", "A rusty key that seems to fit into a lock.");
