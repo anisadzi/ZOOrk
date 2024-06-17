@@ -13,3 +13,5 @@ The project is organized into several branches and folders:
 - **test**
   - A branch where the `inventory` function is implemented. It is Part 1 of the assignment.
 
+### Video Demo
+  https://drive.google.com/drive/folders/1ZMtOHM-e-b66rs3ZzMwY_q0jZHaRjzSZ
